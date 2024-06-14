@@ -6,12 +6,12 @@ import java.util.Locale
 import java.util.TimeZone
 
 
-fun Long.toBrazilianDateFormat(pattern: String = "dd/MM/yyyy"): String{
+fun Long.toBrazilianDateFormat(pattern: String = "dd/MM/yyyy", language: String = "pt-br", timeZoneId: String = "GMT"): String {
     val date = Date(this)
     val formatter = SimpleDateFormat(
-        pattern, Locale("pt-br")
+        pattern, Locale(language)
     ).apply {
-        timeZone = TimeZone.getTimeZone("GMT")
+        timeZone = TimeZone.getTimeZone(timeZoneId)
     }
     return formatter.format(date)
 }
